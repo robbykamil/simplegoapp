@@ -23,12 +23,12 @@ jobs:
       # Build the Go application
       - name: Build application
         run: |
-          go build -o myapp
+          go build -o simplegoapp
 
       # Build Docker image
       - name: Build Docker image
         run: |
-          docker build -t myapp:latest .
+          docker build -t simplegoapp:latest .
 
       # Push Docker image to Docker Hub (or any registry)
       - name: Log in to Docker Hub
@@ -38,8 +38,8 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Push Docker image
         run: |
-          docker tag myapp:latest <your-dockerhub-username>/myapp:latest
-          docker push <your-dockerhub-username>/myapp:latest
+          docker tag simplegoapp:latest <your-dockerhub-username>/simplegoapp:latest
+          docker push <your-dockerhub-username>/simplegoapp:latest
 
   deploy:
     runs-on: ubuntu-latest
