@@ -10,10 +10,10 @@ RUN go mod download
 COPY . .
 
 # Build the application
-RUN go build -o myapp .
+RUN go build -o simplegoapp .
 
 # Expose the port
 EXPOSE 8080
 
 # Run the application
-CMD ["./myapp"]
+CMD ["./simplegoapp"]
