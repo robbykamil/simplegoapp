@@ -18,7 +18,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v4
         with:
-          go-version: 1.20
+          go-version: 1.23
 
       # Build the Go application
       - name: Build application
@@ -50,8 +50,8 @@ jobs:
       - name: Deploy to server
         run: |
           ssh -o StrictHostKeyChecking=no user@your-server-ip << EOF
-            docker pull <your-dockerhub-username>/myapp:latest
-            docker stop myapp || true
-            docker rm myapp || true
-            docker run -d -p 8080:8080 --name myapp <your-dockerhub-username>/myapp:latest
+            docker pull <your-dockerhub-username>/simplegoapp:latest
+            docker stop simplegoapp || true
+            docker rm simplegoapp || true
+            docker run -d -p 8080:8080 --name simplegoapp <your-dockerhub-username>/simplegoapp:latest
           EOF
